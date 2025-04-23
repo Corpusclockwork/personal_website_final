@@ -1,0 +1,36 @@
+.CodeBodyContainer {
+    max-width: 100%;
+}
+
+.CodeBody {
+    font-family:"Abel", sans-serif;
+    max-width: 80%;
+    margin-inline: auto;
+    background-color: #424549;
+    color:white;
+    border-radius: 10px;
+    padding: 5%;
+}
+
+.CodeBodyHeader {
+    font-size: clamp(0.6rem, 2.5vw, 2.8rem);
+}
+
+.project {
+    text-align: left;
+}
+
+.projectName {
+    text-decoration: underline;
+    color: #afd8e2;
+    font-weight: bold;
+}
+
+.projectState {
+    color:white;
+}
+
+.ProjectsSection {
+    padding: 0;
+    font-size: clamp(0.3rem, 2vw, 1.5rem);
+}

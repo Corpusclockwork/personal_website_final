@@ -1,0 +1,60 @@
+.slideshowContainer {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color:rgba(74, 74, 74, 0.8);
+    position: fixed;
+}
+
+.leftArrow {
+    font-size: clamp(1rem, 5vw, 4em);
+    color: white;
+    left: 2%;
+    position: fixed;
+    top: 50%;
+}
+
+.leftArrow:hover, .rightArrow:hover, .closeButton:hover {
+    cursor: pointer;
+}
+
+.rightArrow {
+    font-size: clamp(1rem, 5vw, 4em);
+    color: white;
+    right: 2%;
+    position: fixed;
+    top: 50%;
+}
+
+.closeButton {
+    font-size: clamp(1rem, 5vw, 3em);
+    color: white;
+    right: 2%;
+    top: 2%;
+    position: fixed;
+}
+
+.slideshowImageContainer {
+    justify-self: anchor-center;
+    align-self: anchor-center;
+    position: absolute;
+    width: 80%;
+    user-select: none;
+    margin-top: 10px;
+}
+
+.slideshowImage {
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+.descriptionSection {
+    color:white;
+    font-family:"Abel", sans-serif;
+    font-size: clamp(0.6rem, 2.5vw, 1.5rem);
+    padding-bottom: 5%;
+    padding-top: 2%;
+    margin-left: 50px;
+    margin-right: 50px;
+}
