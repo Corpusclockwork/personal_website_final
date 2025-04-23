@@ -28,6 +28,7 @@ function PenOnPaper() {
                     All of these are done straight to paper using ballpoint pen, using pencil is more stressful, makes the whole process seem overly important. 
                     Also having the chance to correct mistakes means that I will never be done if I use pencil. Most of these are pretty old
                     and I don't really like the way they look anymore, and don't have much to say about them. 
+                    The more recent stuff is at the top of the page for convenience.
                     Less descriptions are present in this section, but I hope you have a good time anyway :).
                 </div>
                 <div className="imagesContainer" key="imagesContainer"> 

@@ -9,7 +9,7 @@ function Code(){
                 </div>
                 <ul className="ProjectsSection">
                     <li className="project">
-                        <b className="projectName">This website :D</b>
+                        <b className="projectName"><a href="https://github.com/Corpusclockwork/personal_website_final" target="_blank">This website :D</a></b>
                         <div className="projectDescription"> I made this website use React in the front end, NodeJS and Express for the backend. It is hosted using AWS and CloudFlare :)</div>
                     </li>
                     <br />
