@@ -9,7 +9,8 @@ import PenOnPaper from './pages/jsx/PenOnPaper.jsx';
 import Animation from './pages/jsx/Animation.jsx';
 import Code from './pages/jsx/Code.jsx';
 
-import App from './App.jsx'
+import App from './App.jsx';
+// import 'dotenv/config';
 
 createRoot(document.getElementById('root')).render(
 <BrowserRouter>

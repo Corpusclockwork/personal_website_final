@@ -6,8 +6,8 @@ import {Link, useLocation } from "react-router";
 import axios from "axios";
 
 function App() {
-     const development = "http://localhost:8080";
-     const hostRootURL = development;
+    const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
+    console.log(hostRootURL);
 
   return (
     <>

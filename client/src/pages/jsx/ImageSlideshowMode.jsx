@@ -4,8 +4,7 @@ import "../css/Slideshow.css";
 import { FaTimes, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 function ImageSlideshowMode({images, clickedImage, closeSlideshow}) {
-    const development = "http://localhost:8080";
-    const hostRootURL = development;
+    const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
 
     const [currentImage, setCurrentImage] = useState(clickedImage);
     const [currentDescription, setCurrentDescription] = useState("");

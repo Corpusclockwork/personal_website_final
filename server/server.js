@@ -1,9 +1,5 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
-const corsOptions = {
-    origin: ["http://localhost:5173"],
-};
 const fs = require('fs');
 const path = require('path');
 
@@ -14,7 +10,6 @@ const Descriptions = require('./descriptions/DigitalArtDescriptions').default;
 const DigitalArtNames = require('./asset_dates/DigitalArtDates').default;
 
 //app.use
-app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.static(digitalArtFolderName));
 app.use(express.static(penOnPaperFolderName))
@@ -37,7 +32,6 @@ app.get('/getPenOnPaperImageFileNames', async (req, res) => {
         res.send(files);
     });
 });
-
 
 //app.listen
 app.listen(8080, () =>{

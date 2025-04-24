@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import ImageSlideshowMode from "./ImageSlideshowMode";
 
 function DigitalArt() {
-    const development = "http://localhost:8080";
-    const hostRootURL = development;
+    const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
+    console.log(hostRootURL);
     const [imageList, setImageList] = useState([]);
 
     const [isSlideshowMode, setIsSlideshowMode] = useState(false);
