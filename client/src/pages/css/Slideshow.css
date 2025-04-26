@@ -1,7 +1,6 @@
 .slideshowContainer {
     width: 100vw;
     height: 100vh;
-    left: 0;
     top: 0;
     background-color:rgba(74, 74, 74, 0.8);
     position: fixed;
@@ -44,7 +43,7 @@
     flex-direction: column;
     justify-self: center;
     align-self: center;
-    width: 80%;
+    width: 75%;
     min-height: 100%;
 }
 
