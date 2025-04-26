@@ -5,7 +5,6 @@ import ImageSlideshowMode from "./ImageSlideshowMode";
 
 function Animation({animationImages}){
     const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
-    console.log(hostRootURL);
     const [imageList, setImageList] = useState([]);
 
     const [isSlideshowMode, setIsSlideshowMode] = useState(false);
@@ -17,7 +16,13 @@ function Animation({animationImages}){
         setimageUrlList(imageData.data);
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
-                <video onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} key={`image_${index}`} src={hostRootURL + '/' + image} className={isSlideshowMode ? "" : "image"} />
+                <video 
+                    loading="lazy" 
+                    onClick={() => {setIsSlideshowMode(true); 
+                    setSelectedImage(image);}} key={`image_${index}`} 
+                    src={hostRootURL + '/' + image} 
+                    className={isSlideshowMode ? "" : "image"} 
+                />
             </div>
         ));
     }
@@ -29,7 +34,13 @@ function Animation({animationImages}){
     return(
         <>
         <div>
-            {isSlideshowMode && <ImageSlideshowMode images = {imageUrlList} clickedImage = {selectedImage} closeSlideshow = {() => {setIsSlideshowMode(false)}} imageType="Animation"/>}
+            {isSlideshowMode && 
+            <ImageSlideshowMode 
+                images = {imageUrlList} 
+                clickedImage = {selectedImage} 
+                closeSlideshow = {() => {setIsSlideshowMode(false)}} 
+                imageType="Animation"
+            />}
         </div>
         <div className="ArtBodyContainer">
             <div className="ArtBody">

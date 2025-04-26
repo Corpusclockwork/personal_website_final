@@ -1,3 +1,4 @@
+/*global chrome*/
 import "../css/About.css";
 
 function About(){

@@ -50,14 +50,14 @@
 
 .slideshowAnimation {
     max-height: 80vh;
-    max-width: 80%;
+    max-width: 100%;
     justify-self: center;
     align-self: center;
 }
 
 .slideshowImage {
     max-height: 80vh;
-    max-width: 80%;
+    max-width: 100%;
     justify-self: center;
     align-self: center;
     user-select: none;

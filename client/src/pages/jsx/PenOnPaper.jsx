@@ -16,7 +16,14 @@ function PenOnPaper() {
         setimageUrlList(imageData.data);
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
-                <img onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} key={`image_${index}`} src={hostRootURL + '/' + image} className={isSlideshowMode ? "" : "image"} />
+                <img 
+                    loading="lazy"
+                    onClick={() => {setIsSlideshowMode(true); 
+                    setSelectedImage(image);}} 
+                    key={`image_${index}`} 
+                    src={hostRootURL + '/' + image} 
+                    className={isSlideshowMode ? "" : "image"}  
+                />
             </div>
         ));
     }
@@ -28,7 +35,13 @@ function PenOnPaper() {
     return(
         <>
         <div>
-            {isSlideshowMode && <ImageSlideshowMode images = {imageUrlList} clickedImage = {selectedImage} closeSlideshow = {() => {setIsSlideshowMode(false)}} imageType="PenOnPaper"/>}
+            {isSlideshowMode && 
+            <ImageSlideshowMode 
+                images = {imageUrlList} 
+                clickedImage = {selectedImage} 
+                closeSlideshow = {() => {setIsSlideshowMode(false)}} 
+                imageType="PenOnPaper"
+            />}
         </div>
         <div className="ArtBodyContainer">
             <div id ="/penonpaper" className="ArtBody">

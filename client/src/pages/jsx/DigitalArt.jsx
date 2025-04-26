@@ -5,7 +5,6 @@ import ImageSlideshowMode from "./ImageSlideshowMode";
 
 function DigitalArt() {
     const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
-    console.log(hostRootURL);
     const [imageList, setImageList] = useState([]);
 
     const [isSlideshowMode, setIsSlideshowMode] = useState(false);
@@ -17,7 +16,13 @@ function DigitalArt() {
         setimageUrlList(imageData.data);
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
-                <img onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} key={`image_${index}`} src={hostRootURL + '/' + image} className={isSlideshowMode ? "" : "image"} />
+                <img 
+                    loading="lazy" 
+                    onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} 
+                    key={`image_${index}`} 
+                    src={hostRootURL + '/' + image} 
+                    className={isSlideshowMode ? "" : "image"} 
+                />
             </div>
         ));
     }
@@ -29,7 +34,13 @@ function DigitalArt() {
     return(
         <>
         <div>
-            {isSlideshowMode && <ImageSlideshowMode images = {imageUrlList} clickedImage = {selectedImage} closeSlideshow = {() => {setIsSlideshowMode(false)}} imageType="DigitalArt"/>}
+            {isSlideshowMode && 
+            <ImageSlideshowMode 
+                images = {imageUrlList} 
+                clickedImage = {selectedImage} 
+                closeSlideshow = {() => {setIsSlideshowMode(false)}} 
+                imageType="DigitalArt"
+            />}
         </div>
         <div className="ArtBodyContainer">
             <div className="ArtBody">

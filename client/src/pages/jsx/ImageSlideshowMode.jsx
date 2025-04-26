@@ -18,7 +18,6 @@ function ImageSlideshowMode({images, clickedImage, closeSlideshow, imageType}) {
         } else if (imageType== "Animation"){
             url = "/getAnimationDescription";
         }
-        console.log(url)
         await axios.get(
             hostRootURL + url, 
             {params: {imageToGetDescriptionOf: currentImage}}
