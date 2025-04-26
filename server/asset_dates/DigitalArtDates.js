@@ -1,3 +1,4 @@
+// I know this is ugly, but sorting them using file properties might not work on linux
 const DigitalArtDatesArray = [
     {name : 'backofdoordrawing.png', date : new Date("2023-10-07")},
     {name : 'bestbug.png', date : new Date("2023-04-06")},

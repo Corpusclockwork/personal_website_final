@@ -3,15 +3,24 @@ import axios from "axios";
 import "../css/Slideshow.css";
 import { FaTimes, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-function ImageSlideshowMode({images, clickedImage, closeSlideshow}) {
+function ImageSlideshowMode({images, clickedImage, closeSlideshow, imageType}) {
     const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
 
     const [currentImage, setCurrentImage] = useState(clickedImage);
     const [currentDescription, setCurrentDescription] = useState("");
 
     async function getImageDescription() {
-        const descriptionData = await axios.get(
-            hostRootURL + `/getDigitalArtImageDescription`, 
+        let url;
+        if (imageType== "DigitalArt"){
+            url = "/getDigitalArtImageDescription";
+        } else if (imageType== "PenOnPaper"){
+            url = "/getPenOnPaperImageDescription";
+        } else if (imageType== "Animation"){
+            url = "/getAnimationDescription";
+        }
+        console.log(url)
+        await axios.get(
+            hostRootURL + url, 
             {params: {imageToGetDescriptionOf: currentImage}}
         )
         .then(function (response) {
@@ -57,7 +66,12 @@ function ImageSlideshowMode({images, clickedImage, closeSlideshow}) {
         <div className="slideshowContainer">
             <FaAngleLeft className="leftArrow" onClick={() => {previousImage()}}> </FaAngleLeft>
             <div className="slideshowImageContainer">
-                <img className="slideshowImage" src={hostRootURL + '/' + currentImage}></img>
+                {( imageType === "DigitalArt"  || imageType === "PenOnPaper") &&
+                    <img className="slideshowImage" src={hostRootURL + '/' + currentImage}></img>
+                }
+                { imageType === "Animation" &&
+                    <video className="slideshowAnimation" src={hostRootURL + '/' + currentImage} controls autoplay='true'></video>
+                }
                 <div className="descriptionSection">
                     {currentDescription}
                 </div>

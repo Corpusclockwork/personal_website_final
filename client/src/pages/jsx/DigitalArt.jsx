@@ -29,7 +29,7 @@ function DigitalArt() {
     return(
         <>
         <div>
-            {isSlideshowMode && <ImageSlideshowMode images = {imageUrlList} clickedImage = {selectedImage} closeSlideshow = {() => {setIsSlideshowMode(false)}}/>}
+            {isSlideshowMode && <ImageSlideshowMode images = {imageUrlList} clickedImage = {selectedImage} closeSlideshow = {() => {setIsSlideshowMode(false)}} imageType="DigitalArt"/>}
         </div>
         <div className="ArtBodyContainer">
             <div className="ArtBody">

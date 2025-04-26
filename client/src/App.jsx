@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import {Link, useLocation } from "react-router";
-import axios from "axios";
 
 function App() {
     const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
-    console.log(hostRootURL);
 
   return (
     <>

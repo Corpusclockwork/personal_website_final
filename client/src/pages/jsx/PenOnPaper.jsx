@@ -1,18 +1,22 @@
 import axios from "axios";
 import "../css/Art.css";
 import { useState, useEffect } from "react";
+import ImageSlideshowMode from "./ImageSlideshowMode";
 
 function PenOnPaper() {
-    const development = "http://localhost:8080";
-    const hostRootURL = development;
-    const [imageList, setImageList] = useState([])
+    const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
+    const [imageList, setImageList] = useState([]);
+
+    const [isSlideshowMode, setIsSlideshowMode] = useState(false);
+    const [imageUrlList, setimageUrlList] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const getAPI = async () => {
         const imageData = await axios.get(hostRootURL + '/getPenOnPaperImageFileNames');
-        console.log(imageData.data);
+        setimageUrlList(imageData.data);
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
-                <img key={`image_${index}`} src={hostRootURL + '/' + image} className="image" />
+                <img onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} key={`image_${index}`} src={hostRootURL + '/' + image} className={isSlideshowMode ? "" : "image"} />
             </div>
         ));
     }
@@ -22,6 +26,10 @@ function PenOnPaper() {
       }, []);
 
     return(
+        <>
+        <div>
+            {isSlideshowMode && <ImageSlideshowMode images = {imageUrlList} clickedImage = {selectedImage} closeSlideshow = {() => {setIsSlideshowMode(false)}} imageType="PenOnPaper"/>}
+        </div>
         <div className="ArtBodyContainer">
             <div id ="/penonpaper" className="ArtBody">
                 <div className="ArtText">
@@ -36,6 +44,7 @@ function PenOnPaper() {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
