@@ -17,7 +17,7 @@ function DigitalArt() {
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
                 <img 
-                    preload="true" 
+                    loading="lazy" 
                     onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} 
                     key={`image_${index}`} 
                     src={hostRootURL + '/' + image} 

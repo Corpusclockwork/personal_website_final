@@ -13,7 +13,7 @@ function About(){
                 I've also added a code section for personal programming projects, as it's probably good to showcase skills that actually pay :)))). 
                 <br />
                 <br />
-                I built this website using React for the frontend, and NodeJS with Express in the backend to serve the images and animations. I used aws for hosting.
+                I built this website using React for the frontend, and NodeJS with Express in the backend to serve the images and animations. I used AWS for hosting.
                 <br />
                 <br />
                 Have a nice day !
