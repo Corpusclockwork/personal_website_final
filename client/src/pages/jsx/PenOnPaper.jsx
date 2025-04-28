@@ -17,7 +17,7 @@ function PenOnPaper() {
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
                 <img 
-                    loading="lazy"
+                    preload="true"
                     onClick={() => {setIsSlideshowMode(true); 
                     setSelectedImage(image);}} 
                     key={`image_${index}`} 

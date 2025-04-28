@@ -17,11 +17,12 @@ function Animation({animationImages}){
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
                 <video 
-                    loading="lazy" 
+                    preload="true"
                     onClick={() => {setIsSlideshowMode(true); 
                     setSelectedImage(image);}} key={`image_${index}`} 
                     src={hostRootURL + '/' + image} 
-                    className={isSlideshowMode ? "" : "image"} 
+                    className={isSlideshowMode ? "" : "image"}
+                    type="video/mp4"
                 />
             </div>
         ));

@@ -16,6 +16,12 @@
     font-size: clamp(0.6rem, 2.5vw, 2.8rem);
 }
 
+@media only screen and (max-width: 600px) {
+    .CodeBody {
+      font-size: 1em;
+    }
+}
+
 .project {
     text-align: left;
 }

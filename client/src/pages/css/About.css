@@ -12,3 +12,9 @@
     border-radius: 10px;
     padding: 5%;
 }
+
+@media only screen and (max-width: 600px) {
+    .AboutBody {
+      font-size: 1em;
+    }
+}

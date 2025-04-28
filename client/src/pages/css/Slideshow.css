@@ -1,17 +1,20 @@
 .slideshowContainer {
+    display: grid;
     width: 100vw;
     height: 100vh;
     top: 0;
     background-color:rgba(74, 74, 74, 0.8);
     position: fixed;
+    grid-template-columns: 10% auto 10%;
 }
 
 .leftArrow {
     font-size: clamp(1rem, 5vw, 4em);
     color: white;
-    left: 2%;
-    position: fixed;
-    top: 50%;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
+    align-self: center;
 }
 
 .leftArrow:hover, .rightArrow:hover, .closeButton:hover {
@@ -21,9 +24,10 @@
 .rightArrow {
     font-size: clamp(1rem, 5vw, 4em);
     color: white;
-    right: 2%;
-    position: fixed;
-    top: 50%;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    justify-self: center;
+    align-self: center;
 }
 
 .closeButton {
@@ -43,8 +47,10 @@
     flex-direction: column;
     justify-self: center;
     align-self: center;
-    width: 75%;
+    width: 100%;
     min-height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 .slideshowAnimation {
@@ -70,4 +76,10 @@
     margin-right: 50px;
     justify-self: center;
     align-self: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .descriptionSection {
+      font-size: 1em;
+    }
 }
