@@ -3,7 +3,7 @@ import "../css/Art.css";
 import { useState, useEffect } from "react";
 import ImageSlideshowMode from "./ImageSlideshowMode";
 
-function Animation({animationImages}){
+function Animation(){
     const hostRootURL = import.meta.env.VITE_API_ENDPOINT;
     const [imageList, setImageList] = useState([]);
 
@@ -16,13 +16,12 @@ function Animation({animationImages}){
         setimageUrlList(imageData.data);
         setImageList(imageData.data.map((image, index) => 
             <div key={`imageContainer_${index}`} className="imageContainer">
-                <video 
-                    onClick={() => {setIsSlideshowMode(true); 
-                    setSelectedImage(image);}} key={`image_${index}`} 
-                    src={hostRootURL + '/' + image} 
-                    className={isSlideshowMode ? "" : "image"}
-                    type="video/mp4"
-                    playsinline
+                <img 
+                    loading="lazy" 
+                    onClick={() => {setIsSlideshowMode(true); setSelectedImage(image);}} 
+                    key={`image_${index}`} 
+                    src={hostRootURL + '/' + image.replace('mp4', 'png')} 
+                    className={isSlideshowMode ? "" : "image"} 
                 />
             </div>
         ));
