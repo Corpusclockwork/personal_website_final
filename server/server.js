@@ -96,7 +96,7 @@ app.get('/getDigitalArtImageDescription', async (req, res) => {
 app.get('/getPenOnPaperImageFileNames', async (_, res) => {
     const filenames = fs.readdirSync('./assets/PenOnPaper/');
     filenames.sort(sortByDatePenOnPaper);
-    res.send(fs.readdirSync('./assets/PenonPaper/'));
+    res.send(filenames);
 });
 app.get('/getPenOnPaperImageDescription', async (req, res) => {
     const imageUrl = req.query.imageToGetDescriptionOf;
@@ -107,7 +107,7 @@ app.get('/getPenOnPaperImageDescription', async (req, res) => {
 app.get('/getAnimationFileNames', async (_, res) => {
     const filenames = fs.readdirSync('./assets/Animations/');
     filenames.sort(sortByDateAnimations);
-    res.send(fs.readdirSync('./assets/Animations/'));
+    res.send(filenames);
 });
 app.get('/getAnimationImageFileNames', async (_, res) => {
     res.send(fs.readdirSync('./assets/AnimationImages/'));
