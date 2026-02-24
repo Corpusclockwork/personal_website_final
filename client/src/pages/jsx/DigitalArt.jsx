@@ -48,7 +48,7 @@ function DigitalArt() {
                     I used FireAlpaca up until the start of 2025 when I finally brought a
                     new laptop that wouldn't make sounds of agony whenever I tried to run Krita.
                     My current laptop also has a big enough screen that I can actually use Krita comfortably, so that's quite nice.
-                    I still use a Wacom tablet that is around nine years old though.
+                    I still use a Wacom tablet that is around a decade old though.
                 </div>
                 <div className="imagesContainer" key="imagesContainer"> 
                     {imageList}

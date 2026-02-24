@@ -3,46 +3,114 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 
-const digitalArtFolderName = path.join(__dirname,'/assets/DigitalArt');
-const penOnPaperFolderName = path.join(__dirname,'/assets/PenOnPaper');
-const animationsFolderName = path.join(__dirname,'/assets/Animations');
-
 const DigitalArtDescriptions = require('./descriptions/DigitalArtDescriptions').default;
 const PenOnPaperDescriptions = require('./descriptions/PenOnPaperDescriptions').default;
 const AnimationDescriptions = require('./descriptions/AnimationDescriptions').default;
 
-const DigitalArtNames = require('./asset_dates/DigitalArtDates').default;
-const PenOnPaperNames = require('./asset_dates/PenOnPaperDates').default;
-const AnimationNames = require('./asset_dates/AnimationDates').default;
-
 //app.use
 app.use(express.static(path.join(__dirname, '../client/dist')));
-app.use(express.static(digitalArtFolderName));
-app.use(express.static(penOnPaperFolderName));
-app.use(express.static(animationsFolderName));
+app.use(express.static(path.join(__dirname,'/assets/DigitalArt')));
+app.use(express.static(path.join(__dirname,'/assets/PenOnPaper')));
+app.use(express.static(path.join(__dirname,'/assets/Animations')));
+app.use(express.static(path.join(__dirname,'/assets/AnimationImages')));
 
-app.get("/headerImage", (req, res) => {
+const sortByDateDigitalArt = (a, b) => {
+    try {
+        const a_stats = fs.statSync('./assets/DigitalArt/' + a);
+        const b_stats = fs.statSync('./assets/DigitalArt/' + b);
+        // this should allow me to group things I don't care about at the end of the list, some images have 
+        // inaccurate birthtimes due to being moved around and changed format, some of these are over a decade old at this point
+        if(a.startsWith("_", 0)){
+            return 1;
+        }
+        if(b.startsWith("_", 0)){
+            return -1;
+        }
+        if(a.startsWith("_", 0) && b.startsWith("_", 0)){
+            return b_stats.birthtimeMs - a_stats.birthtimeMs;
+        }
+        return b_stats.birthtimeMs - a_stats.birthtimeMs;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const sortByDatePenOnPaper = (a, b) => {
+    try {
+        const a_stats = fs.statSync('./assets/PenOnPaper/' + a);
+        const b_stats = fs.statSync('./assets/PenOnPaper/' + b);
+        // this should allow me to group things I don't care about at the end of the list, some images have 
+        // inaccurate birthtimes due to being moved around and changed format, some of these are over a decade old at this point
+        if(a.startsWith("_", 0)){
+            return 1;
+        }
+        if(b.startsWith("_", 0)){
+            return -1;
+        }
+        if(a.startsWith("_", 0) && b.startsWith("_", 0)){
+            return b_stats.birthtimeMs - a_stats.birthtimeMs;
+        }
+        return b_stats.birthtimeMs - a_stats.birthtimeMs;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const sortByDateAnimations = (a, b) => {
+    try {
+        const a_stats = fs.statSync('./assets/Animations/' + a);
+        const b_stats = fs.statSync('./assets/Animations/' + b);
+        // this should allow me to group things I don't care about at the end of the list, some images have 
+        // inaccurate birthtimes due to being moved around and changed format, some of these are over a decade old at this point
+        if(a.startsWith("_", 0)){
+            return 1;
+        }
+        if(b.startsWith("_", 0)){
+            return -1;
+        }
+        if(a.startsWith("_", 0) && b.startsWith("_", 0)){
+            return b_stats.birthtimeMs - a_stats.birthtimeMs;
+        }
+        return b_stats.birthtimeMs - a_stats.birthtimeMs;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+app.get("/headerImage", (_, res) => {
     res.sendFile(path.join(__dirname,'/assets/DigitalArt/backofdoordrawing.png'));
 });
 
-app.get('/getDigitalArtImageFileNames', async (req, res) => {
-    res.send(DigitalArtNames);
+// Digital Art
+app.get('/getDigitalArtImageFileNames', async (_, res) => {
+    const filenames = fs.readdirSync('./assets/DigitalArt/');
+    filenames.sort(sortByDateDigitalArt);
+    res.send(filenames);
 });
 app.get('/getDigitalArtImageDescription', async (req, res) => {
     const imageUrl = req.query.imageToGetDescriptionOf;
     res.send(DigitalArtDescriptions.get(imageUrl));
 });
 
-app.get('/getPenOnPaperImageFileNames', async (req, res) => {
-    res.send(PenOnPaperNames);
+// Pen on Paper
+app.get('/getPenOnPaperImageFileNames', async (_, res) => {
+    const filenames = fs.readdirSync('./assets/PenOnPaper/');
+    filenames.sort(sortByDatePenOnPaper);
+    res.send(fs.readdirSync('./assets/PenonPaper/'));
 });
 app.get('/getPenOnPaperImageDescription', async (req, res) => {
     const imageUrl = req.query.imageToGetDescriptionOf;
     res.send(PenOnPaperDescriptions.get(imageUrl));
 });
 
-app.get('/getAnimationFileNames', async (req, res) => {
-    res.send(AnimationNames);
+// Animation
+app.get('/getAnimationFileNames', async (_, res) => {
+    const filenames = fs.readdirSync('./assets/Animations/');
+    filenames.sort(sortByDateAnimations);
+    res.send(fs.readdirSync('./assets/Animations/'));
+});
+app.get('/getAnimationImageFileNames', async (_, res) => {
+    res.send(fs.readdirSync('./assets/AnimationImages/'));
 });
 app.get('/getAnimationDescription', async (req, res) => {
     const imageUrl = req.query.imageToGetDescriptionOf;
